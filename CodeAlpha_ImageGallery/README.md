@@ -155,7 +155,7 @@ npx serve .
 ## 👤 Author
 
 **Bhaumik** — CodeAlpha Internship (Web Development)  
-GitHub: [@yourgithubusername](https://github.com/yourgithubusername)
+GitHub: [@Bhaumik1904](https://github.com/Bhaumik1904)
 
 ---
 

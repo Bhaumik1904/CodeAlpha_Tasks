@@ -11,3 +11,7 @@ A collection of web development projects completed during the **CodeAlpha Intern
 ---
 
 *More projects coming soon as part of the internship.*
+
+---
+
+**Author:** [Bhaumik1904](https://github.com/Bhaumik1904) — CodeAlpha Web Development Internship
