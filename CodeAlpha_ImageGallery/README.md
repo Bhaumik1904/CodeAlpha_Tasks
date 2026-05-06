@@ -12,17 +12,17 @@ A premium, Apple-inspired image gallery web application featuring a lightbox vie
 ### Main Gallery — Light Mode
 ![Main Gallery Light Mode](screenshots/01_gallery_light.png)
 
-### Main Gallery — Dark Mode
+### Dark Mode
 ![Dark Mode](screenshots/02_gallery_dark.png)
+
+### Lightbox Viewer
+![Lightbox](screenshots/03_lightbox.png)
 
 ### Category Filter — Nature
 ![Nature Filter](screenshots/04_filter_nature.png)
 
 ### Image Hover & Quick Actions
-![Image Hover](screenshots/03_lightbox.png)
-
-### Full Gallery View
-![Full Gallery](screenshots/05_all_photos.png)
+![Image Hover State](screenshots/05_all_photos.png)
 
 ---
 
