@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Calcify — Premium Calculator</title>
+  <meta name="description" content="A premium, professional calculator with history, keyboard support, and stunning UI."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <div class="bg-orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <div class="app">
+
+    <!-- ── HISTORY PANEL ── -->
+    <aside class="history-panel" id="historyPanel">
+      <div class="hp-header">
+        <span class="hp-title">History</span>
+        <button class="hp-clear" id="btnClearHistory" title="Clear all history">Clear</button>
+      </div>
+      <ul class="hp-list" id="historyList">
+        <li class="hp-empty" id="historyEmpty">No calculations yet</li>
+      </ul>
+    </aside>
+
+    <!-- ── CALCULATOR ── -->
+    <main class="calc-wrap">
+      <div class="calc">
+
+        <!-- Header -->
+        <div class="calc-header">
+          <div class="calc-brand">
+            <div class="brand-icon">
+              <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="4" fill="url(#bg)"/><rect x="6" y="6" width="5" height="3" rx="1" fill="rgba(255,255,255,.9)"/><rect x="13" y="6" width="5" height="3" rx="1" fill="rgba(255,255,255,.6)"/><rect x="6" y="11" width="3" height="3" rx="1" fill="rgba(255,255,255,.7)"/><rect x="10.5" y="11" width="3" height="3" rx="1" fill="rgba(255,255,255,.7)"/><rect x="15" y="11" width="3" height="3" rx="1" fill="rgba(255,255,255,.7)"/><rect x="6" y="16" width="3" height="3" rx="1" fill="rgba(255,255,255,.7)"/><rect x="10.5" y="16" width="3" height="3" rx="1" fill="rgba(255,255,255,.7)"/><rect x="15" y="16" width="3" height="5" rx="1" fill="rgba(255,255,255,.9)"/><defs><linearGradient id="bg" x1="3" y1="3" x2="21" y2="21"><stop stop-color="#a78bfa"/><stop offset="1" stop-color="#7c3aed"/></linearGradient></defs></svg>
+            </div>
+            <span>Calcify</span>
+          </div>
+          <button class="hp-toggle" id="btnToggleHistory" title="Toggle history">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+          </button>
+        </div>
+
+        <!-- Display -->
+        <div class="display" id="display">
+          <div class="display-expr" id="dispExpr">&nbsp;</div>
+          <div class="display-main" id="dispMain">0</div>
+        </div>
+
+        <!-- Mode chips -->
+        <div class="mode-row">
+          <button class="mode-chip active" id="modeStd" onclick="setMode('std')">Standard</button>
+          <button class="mode-chip" id="modeSci" onclick="setMode('sci')">Scientific</button>
+        </div>
+
+        <!-- Scientific row (hidden by default) -->
+        <div class="sci-row hidden" id="sciRow">
+          <button class="btn btn-fn" id="btnSin"  onclick="sciOp('sin')">sin</button>
+          <button class="btn btn-fn" id="btnCos"  onclick="sciOp('cos')">cos</button>
+          <button class="btn btn-fn" id="btnTan"  onclick="sciOp('tan')">tan</button>
+          <button class="btn btn-fn" id="btnSqrt" onclick="sciOp('sqrt')">√</button>
+          <button class="btn btn-fn" id="btnLog"  onclick="sciOp('log')">log</button>
+          <button class="btn btn-fn" id="btnLn"   onclick="sciOp('ln')">ln</button>
+          <button class="btn btn-fn" id="btnPow"  onclick="inputOp('^')">xʸ</button>
+          <button class="btn btn-fn" id="btnPi"   onclick="inputConst('π')">π</button>
+        </div>
+
+        <!-- Buttons grid -->
+        <div class="btn-grid" id="btnGrid">
+
+          <!-- Row 1 -->
+          <button class="btn btn-util" id="btnAC"  onclick="clearAll()">AC</button>
+          <button class="btn btn-util" id="btnSign" onclick="toggleSign()">+/−</button>
+          <button class="btn btn-util" id="btnPct" onclick="percent()">%</button>
+          <button class="btn btn-op"  id="btnDiv" onclick="inputOp('÷')">÷</button>
+
+          <!-- Row 2 -->
+          <button class="btn btn-num" id="btn7" onclick="inputNum('7')">7</button>
+          <button class="btn btn-num" id="btn8" onclick="inputNum('8')">8</button>
+          <button class="btn btn-num" id="btn9" onclick="inputNum('9')">9</button>
+          <button class="btn btn-op"  id="btnMul" onclick="inputOp('×')">×</button>
+
+          <!-- Row 3 -->
+          <button class="btn btn-num" id="btn4" onclick="inputNum('4')">4</button>
+          <button class="btn btn-num" id="btn5" onclick="inputNum('5')">5</button>
+          <button class="btn btn-num" id="btn6" onclick="inputNum('6')">6</button>
+          <button class="btn btn-op"  id="btnSub" onclick="inputOp('−')">−</button>
+
+          <!-- Row 4 -->
+          <button class="btn btn-num" id="btn1" onclick="inputNum('1')">1</button>
+          <button class="btn btn-num" id="btn2" onclick="inputNum('2')">2</button>
+          <button class="btn btn-num" id="btn3" onclick="inputNum('3')">3</button>
+          <button class="btn btn-op"  id="btnAdd" onclick="inputOp('+')">+</button>
+
+          <!-- Row 5 -->
+          <button class="btn btn-num span2" id="btn0" onclick="inputNum('0')">0</button>
+          <button class="btn btn-num" id="btnDot" onclick="inputDot()">.</button>
+          <button class="btn btn-eq"  id="btnEq"  onclick="calculate()">=</button>
+
+        </div>
+
+        <!-- Keyboard hint -->
+        <div class="kb-hint">⌨ Keyboard supported</div>
+
+      </div>
+    </main>
+
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
